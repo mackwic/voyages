@@ -32,12 +32,17 @@
     <link rel="stylesheet" href="/linker/styles/bootstrap.css">
     <link rel="stylesheet" href="/linker/styles/select2-bootstrap.css">
     <link rel="stylesheet" href="/linker/styles/select2.css">
+    <link rel="stylesheet" href="/linker/styles/voyages.css">
     <!--STYLES END-->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
 
   <body>
-    <%- body %>
-
+    <div data-ng-app="VoyagesApp">
+      <%- body %>
+    </div>
 
 
     <!--
@@ -62,7 +67,7 @@
     -->
 
     <!--TEMPLATES-->
-
+    
     <!--TEMPLATES END-->
 
 
@@ -89,14 +94,14 @@
     -->
 
     <!--SCRIPTS-->
+    <script src="/linker/js/libs/angular.min.js"></script>
+    <script src="/linker/js/libs/jquery-2.0.3.min.js"></script>
+    <script src="/linker/js/libs/select2.js"></script>
+    <script src="/linker/js/libs/select2_locale_fr.js"></script>
+    <script src="/linker/js/libs/ui-bootstrap-0.7.0.min.js"></script>
+    <script src="/linker/js/libs/ui-bootstrap-tpls-0.7.0.min.js"></script>
+    <script src="/linker/js/libs/ui-select2.js"></script>
     <script src="/linker/js/app.js"></script>
-    <script src="/linker/js/angular.min.js"></script>
-    <script src="/linker/js/jquery-2.0.3.min.js"></script>
-    <script src="/linker/js/select2.js"></script>
-    <script src="/linker/js/select2_locale_fr.js"></script>
-    <script src="/linker/js/ui-bootstrap-0.7.0.min.js"></script>
-    <script src="/linker/js/ui-bootstrap-tpls-0.7.0.min.js"></script>
-    <script src="/linker/js/ui-select2.js"></script>
     <!--SCRIPTS END-->
   </body>
 </html>
