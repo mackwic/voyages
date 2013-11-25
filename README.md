@@ -1,0 +1,2 @@
+# voyages
+### a Sails application
