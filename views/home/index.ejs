@@ -6,10 +6,12 @@
   <div class="row">
     <aside>
       <h2>Filtres</h2>
-<!--       <select ui-select2="select2Options" ng-model="destination">
-        <option value="Marseille">Marseille</option>
+      <select ui-select2 ng-model="select2">
+          <option value="one">First</option>
+          <option value="two">Second</option>
+          <option value="three">Third</option>
       </select>
- -->      <h2>Popup</h2>
+      <h2>Popup</h2>
       <div class="form-horizontal">
         <p>
           <input type="text" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" ng-required="true" close-text="Close" />

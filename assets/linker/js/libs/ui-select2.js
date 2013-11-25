@@ -17,11 +17,11 @@ angular.module('ui.select2', []).value('uiSelect2Config', {}).directive('uiSelec
       var watch,
         repeatOption,
         repeatAttr,
-        isSelect = tElm.is('select'),
+        isSelect = $(tElm).is('select'),
         isMultiple = angular.isDefined(tAttrs.multiple);
 
       // Enable watching of the options dataset if in use
-      if (tElm.is('select')) {
+      if ($(tElm).is('select')) {
         repeatOption = tElm.find('option[ng-repeat], option[data-ng-repeat]');
 
         if (repeatOption.length) {
@@ -93,18 +93,18 @@ angular.module('ui.select2', []).value('uiSelect2Config', {}).directive('uiSelec
           }, true);
           controller.$render = function () {
             if (isSelect) {
-              elm.select2('val', controller.$viewValue);
+              $(elm).select2('val', controller.$viewValue);
             } else {
               if (opts.multiple) {
-                elm.select2(
+                $(elm).select2(
                   'data', convertToSelect2Model(controller.$viewValue));
               } else {
                 if (angular.isObject(controller.$viewValue)) {
-                  elm.select2('data', controller.$viewValue);
+                  $(elm).select2('data', controller.$viewValue);
                 } else if (!controller.$viewValue) {
-                  elm.select2('data', null);
+                  $(elm).select2('data', null);
                 } else {
-                  elm.select2('val', controller.$viewValue);
+                  $(elm).select2('val', controller.$viewValue);
                 }
               }
             }
@@ -118,7 +118,7 @@ angular.module('ui.select2', []).value('uiSelect2Config', {}).directive('uiSelec
               }
               // Delayed so that the options have time to be rendered
               $timeout(function () {
-                elm.select2('val', controller.$viewValue);
+                $(elm).select2('val', controller.$viewValue);
                 // Refresh angular to remove the superfluous option
                 elm.trigger('change');
                 if(newVal && !oldVal && controller.$setPristine) {
@@ -149,7 +149,7 @@ angular.module('ui.select2', []).value('uiSelect2Config', {}).directive('uiSelec
               }
               scope.$apply(function () {
                 controller.$setViewValue(
-                  convertToAngularModel(elm.select2('data')));
+                  convertToAngularModel($(elm).select2('data')));
               });
             });
 
@@ -166,26 +166,26 @@ angular.module('ui.select2', []).value('uiSelect2Config', {}).directive('uiSelec
         }
 
         elm.bind("$destroy", function() {
-          elm.select2("destroy");
+          $(elm).select2("destroy");
         });
 
         attrs.$observe('disabled', function (value) {
-          elm.select2('enable', !value);
+          $(elm).select2('enable', !value);
         });
 
         attrs.$observe('readonly', function (value) {
-          elm.select2('readonly', !!value);
+          $(elm).select2('readonly', !!value);
         });
 
         if (attrs.ngMultiple) {
           scope.$watch(attrs.ngMultiple, function(newVal) {
-            elm.select2(opts);
+            $(elm).select2(opts);
           });
         }
 
         // Initialize the plugin late so that the injected DOM does not disrupt the template compiler
         $timeout(function () {
-          elm.select2(opts);
+          $(elm).select2(opts);
 
           // Set initial value - I'm not sure about this but it seems to need to be there
           elm.val(controller.$viewValue);
@@ -195,7 +195,7 @@ angular.module('ui.select2', []).value('uiSelect2Config', {}).directive('uiSelec
           // Not sure if I should just check for !isSelect OR if I should check for 'tags' key
           if (!opts.initSelection && !isSelect) {
             controller.$setViewValue(
-              convertToAngularModel(elm.select2('data'))
+              convertToAngularModel($(elm).select2('data'))
             );
           }
         });
