@@ -12,8 +12,11 @@
     },
     "scripts": {
         "start": "node app.js",
-        "debug": "node debug app.js"
+        "debug": "node debug app.js",
+        "postdeploy": "npm install"
     },
+    "subdomain": "mackwic-voyages",
+    "engine": "0.10.x",
     "main": "app.js",
     "repository": "",
     "author": "",
