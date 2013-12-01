@@ -1,3 +1,7 @@
 // Start sails and pass it command line arguments
 
-require('sails').lift(require('optimist').argv);
+var optimist = require('optimist');
+
+console.log("PORT: %s", process.env.PORT);
+console.log("ARGV:", optimist.argv);
+require('sails').lift(optimist.argv);
